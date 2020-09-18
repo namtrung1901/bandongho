@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+    <section class="clearfix maincontent my-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="clearfix">
+                        <div class="col-sm-12">
+                            <a href="#" style="text-decoration:none;" title="Mạnh Mẽ &amp; Cuốn H&#250;t với đồng hồ mặt rắn L&#39;Duchen Silver Snake" class="clearfix">
+                                <div class="article-image">
+                                    <img src="~/Images/donghosnaker.jpg" style="height:300px; width:100%;" />
+                                </div>
+                                <h3 class="line-clamp">Mạnh Mẽ &amp; Cuốn H&#250;t với đồng hồ mặt rắn L&#39;Duchen Silver Snake</h3>
+                                <p class="hidden-xs">   Thương hiệu đồng hồ Thụy Sỹ L’Duchen đã mở rộng bộ sưu tập Art Collection của mình với mẫu đồng hồ mặt r...</p>
+                            </a>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="#" style="text-decoration:none;" title="Chuy&#234;n gia chia sẻ 4 c&#225;ch ph&#226;n biệt đồng hồ h&#224;ng hiệu thật v&#224; giả" class="clearfix">
+                                <div class="article-image">
+                                    <img src="~/Images/chronograph2048x2048.jpg" style="width:100%; height:300px;" />
+                                </div>
+                                <h3 class="line-clamp">Chuy&#234;n gia chia sẻ 4 c&#225;ch ph&#226;n biệt đồng hồ h&#224;ng hiệu thật v&#224; giả</h3>
+                                <p class="hidden-xs"> Việc sưu tầm và sở hữu những chiếc đồng hồ hàng hiệu xa xỉ luôn là một niềm đam mê của nhiều quý ông hiện ...</p>
+                            </a>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="#" style="text-decoration:none;" title="3 mẫu đồng hồ Chronograph 6 kim mức gi&#225; trung b&#236;nh đ&#225;ng mua nhất" class="clearfix">
+                                <div class="article-image">
+                                    <img src="~/Images/ban-biet-gi-ve-dong-ho-chronograph-1552766551.jpg" style="width:100%; height:300px;" />
+                                </div>
+                                <h3 class="line-clamp">3 mẫu đồng hồ Chronograph 6 kim mức giá; trung bình;nh đáng;ng mua nhất</h3>
+                                <p class="hidden-xs">
+                                    1. Đồng hồ Jacques Lemans JL-1-1654
+                                    Đứng đầu danh sách Top 3 đồng hồ 6 kim là mẫu đồng hồ Jacques Lema...
+                                </p>
+                            </a>
+                        </div>
+                        <div class="col-sm-12">
+                            <a href="#" style="text-decoration:none;" title="Tại sao bạn n&#234;n y&#234;u c&#244;ng việc của m&#236;nh?" class="clearfix">
+                                <div class="article-image">
+                                    <img src="~/Images/4-ways-to-create-a-more-stable-healthy-work-environment.jpeg" style="width:100%; height:300px;" />
+                                </div>
+                                <h3 class="line-clamp">Tại sao bạn n&#234;n y&#234;u c&#244;ng việc của m&#236;nh?</h3>
+                                <p class="hidden-xs"> Bạn có yêu công việc của bạn không? Tôi chắc rằng sẽ có rất nhiều câu trả lời là không. Vậy, nếu bạn không...</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="left-sidebar">
+                        <h2>Category</h2>
+                        <div class="panel-group category-products" id="accordian">
+                            <!--category-productsr-->
+                            @Html.Action("ListCategory", "Module")
+                        </div>
+                        <!--/category-products-->
+                        <div class="brands_products">
+                            <!--brands_products-->
+                            <h2>Brands</h2>
+                            <div class="brands-name">
+                                @Html.Action("Brand", "Module")
+                            </div>
+                        </div><!--/brands_products-->
+
+                        <div class="price-range">
+                            <!--price-range-->
+                            <h2>Price Range</h2>
+                            <div class="well text-center">
+                                <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
+                                <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+                            </div>
+                        </div><!--/price-range-->
+
+                        <div class="shipping text-center">
+                            <!--shipping-->
+                            <img src="" alt="" />
+                        </div><!--/shipping-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>

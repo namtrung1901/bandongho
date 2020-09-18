@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BanDongHo.Models.Menu>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            @{ int temp = 1;}
+            <div class="mainmenu pull-left">
+                <ul class="nav navbar-nav collapse navbar-collapse">
+                    @foreach (var item in Model)
+                    {
+                        if (temp == 1)
+                        {
+                            <li><a href="@item.Link" class="active">@item.Name</a></li>
+                            temp++;
+                        }
+                        else
+                        {
+                            if (@item.Types == "custom")
+                            {
+                                <li class="dropdown">
+                                    <a href="@item.Link">@item.Name<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        @Html.Action("ChildMainMenu", "Module", new { @id = item.Id })
+                                    </ul>
+                                </li>
+                            }
+                            else
+                            {
+                                <li><a href="@item.Link">@item.Name</a></li>
+                            }
+                        }
+
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <form action="@Url.Action("KetQua","Timkiem")" method="GET">
+                <div class="search_box pull-right">
+                    <input type="text" name="skey" placeholder="Search" />
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

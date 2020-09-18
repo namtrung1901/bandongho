@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<section class="clearfix">
+    <div class="container">
+        <h1 class="text-center">Liên Hệ</h1>
+        @using (Html.BeginForm("SaveContact", "Lienhe", FormMethod.Post))
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    HỌ VÀ TÊN
+                    @Html.TextBox("FullName", null, new { @class = "form-control mt-1" })
+                </div>
+                <div class="col-md-6">
+                    EMAIL
+                    @Html.TextBox("Email", null, new { @class = "form-control mt-1" })
+                </div>
+                <div class="col-md-12 mt-3">
+                    SỐ ĐIỆN THOẠI
+                    @Html.TextBox("Phone", null, new { @class = "form-control mt-1" })
+                </div>
+                <div class="col-md-12 mt-3">
+                    TIÊU ĐỀ
+                    @Html.TextBox("Title", null, new { @class = "form-control mt-1" })
+                </div>
+                <div class="col-md-12 mt-3">
+                    NỘI DUNG
+                    @Html.TextArea("Detail", null, new { @class = "form-control mt-1" })
+                </div>
+                <div class="col-md-12 mt-5">
+                    <button class="btn btn-success" type="submit">Gửi Liên Hệ</button>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+

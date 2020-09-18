@@ -1,0 +1,90 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<BanDongHo.Models.Product>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<section class="clearfix maincontent my-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Category</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        <!--category-productsr-->
+                        @Html.Action("ListCategory", "Module")
+                    </div>
+                    <!--/category-products-->
+                    <div class="brands_products">
+                        <!--brands_products-->
+                        <h2>Brands</h2>
+                        <div class="brands-name">
+                            @Html.Action("Brand", "Module")
+                        </div>
+                    </div><!--/brands_products-->
+
+                    <div class="price-range">
+                        <!--price-range-->
+                        <h2>Price Range</h2>
+                        <div class="well text-center">
+                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
+                            <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+                        </div>
+                    </div><!--/price-range-->
+
+                    <div class="shipping text-center">
+                        <!--shipping-->
+                        <img src="" alt="" />
+                    </div><!--/shipping-->
+
+                </div>
+            </div>
+            <div class="col-md-9">
+                <h2 class="title text-center">Sản phẩm tìm kiếm</h2>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <a href="~/@item.Slug">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="~/Images/@item.Img" alt="" />
+                                            @if (@item.Price_sale == 0)
+                                            {
+                                                <h2>@item.Price.ToString("#,##0")<sup>đ</sup></h2>
+                                                <h2 style="opacity:0;">@item.Price_sale.ToString("#,##0")<sup>đ</sup></h2>
+                                            }
+                                            else
+                                            {
+                                                <del><h2>@item.Price.ToString("#,##0")<sup>đ</sup></h2></del>
+                                                <h2>@item.Price_sale.ToString("#,##0")<sup>đ</sup></h2>
+                                            }
+                                            <p>@item.Name</p>
+                                            <a href="@Url.Action("AddCart", "Giohang", new { @Masp = item.Id, @strURL = Request.Url.ToString() })" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="choose">
+                                    <ul class="nav nav-pills nav-justified">
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                                        <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="pagination justify-content-center">
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+                    of @Model.PageCount
+                </div>
+                <ul class="pagination justify-content-center">
+                    <li class="page-item">@Html.PagedListPager(Model, page => Url.Action("KetQua", new { page = page, @skey = ViewBag.TuKhoa }))</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+

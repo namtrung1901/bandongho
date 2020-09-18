@@ -1,0 +1,142 @@
+﻿@using BanDongHo.Models;
+@model List<Cart>
+@{
+    ViewBag.Title = "Giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@if (Model == null || Model.Count==0)
+{
+    <div class="container">
+        <h1>Giỏ hàng rỗng</h1>
+    </div>
+}
+else { 
+<div class="container">
+    <section id="cart_items">
+        <div class="container">
+            <div class="breadcrumbs">
+                <ol class="breadcrumb">
+                    <li><a href="/">Home</a></li>
+                    <li class="active">My Cart</li>
+                </ol>
+            </div>
+            <div class="table-responsive cart_info">
+                <table class="table table-condensed">
+                    <thead>
+                        <tr class="cart_menu">
+                            <td class="image">Picture</td>
+                            <td class="description">Name</td>
+                            <td class="price">Price</td>
+                            <td class="quantity">Quantity</td>
+                            <td class="total">Total</td>
+                            <td class="delete"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="cart_product">
+                                    <a href=""><img src="~/Images/@item.Img" width="90" alt="" /></a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a href="">@item.Name</a></h4>
+                                    <p>Web ID: 1089772</p>
+                                </td>
+                                <td class="cart_price">
+                                    <p><span>@item.Price.ToString("#,##0").Replace(',', '.') VNĐ</span></p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <div class="cart_quantity_button">
+                                        <form action="@Url.Action("EditNum","Giohang")" method="POST">
+                                            <input class="cart_quantity_input" type="number" min="1" name="quantity" value="@item.Quantity">
+                                            <input type="hidden" value="@item.Id" name="Id" class="form-control">
+                                            <input type="submit" value="Update" name="update_qty" class="btn btn-default btn-sm">
+                                        </form>
+                                    </div>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">
+                                        @{ var total = @item.Quantity * @item.Price; }
+                                        @total.ToString("#,##0").Replace(',', '.') VNĐ
+                                    </p>
+                                </td>
+                                <td class="cart_delete">
+                                    <a class="btn btn-danger" href="@Url.Action("Delete", new { Masp = item.Id })" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này khỏi giỏ hàng?');"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section> <!--/#cart_items-->
+    <section id="do_action">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="total_area">
+                        <ul>
+                            <li>Tổng <span>@Model.Sum(m => m.Amount).ToString("#,##0").Replace(',', '.') VNĐ </span></li>
+                            <li>Thuế <span>@Model.Sum(m => m.Tax).ToString("#,##0").Replace(',', '.') VNĐ </span></li>
+                            <li>Phí vận chuyển <span>Free</span></li>
+                            <li>Thành tiền <span>@Model.Sum(m => m.Total).ToString("#,##0").Replace(',', '.') VNĐ</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <form action="@Url.Action("DatHang","Giohang")">
+                    <div class="col-sm-4">
+                        <div class="customer">
+                            <span class="customer-info">Thông tin khách hàng</span>
+                            @if (Session["UserName"] == null)
+                            {
+                                <div class="wrap-inputcus validate-input m-b-23" data-validate="Username is required">
+                                    <span class="label-cus">Họ và Tên</span>
+                                    <input class="cus-input" type="text" name="fullname" placeholder="Type your fullname" required>
+                                    <span class="focus-input100" data-symbol="&#xf206;"></span>
+                                </div>
+                                <div class="wrap-inputcus validate-input m-b-23" data-validate="Address is required">
+                                    <span class="label-cus">Địa chỉ</span>
+                                    <input class="cus-input" type="text" name="address" placeholder="Type your address" required>
+                                    <span class="focus-input100" data-symbol="&#xf206;"></span>
+                                </div>
+                                <div class="wrap-inputcus validate-input m-b-23" data-validate="Email is required">
+                                    <span class="label-cus">Email</span>
+                                    <input class="cus-input" type="text" name="email" placeholder="Type your email" required>
+                                    <span class="focus-input100" data-symbol="&#xf206;"></span>
+                                </div>
+                                <div class="wrap-inputcus validate-input m-b-23" data-validate="Phone is required">
+                                    <span class="label-cus">Phone</span>
+                                    <input class="cus-input" type="text" name="phone" placeholder="Type your phone" required>
+                                    <span class="focus-input100" data-symbol="&#xf206;"></span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="wrap-inputcus validate-input m-b-23" data-validate="Username is required">
+                                    <span class="label-cus">Họ và Tên</span>
+                                    <input class="cus-input" type="text" name="fullname" placeholder="Type your fullname" required>
+                                    <span class="focus-input100" data-symbol="&#xf206;"></span>
+                                </div>
+                                <div class="wrap-inputcus validate-input m-b-23" data-validate="Address is required">
+                                    <span class="label-cus">Địa chỉ</span>
+                                    <input class="cus-input" type="text" name="address" placeholder="Type your address" required>
+                                    <span class="focus-input100" data-symbol="&#xf206;"></span>
+                                </div>
+                                <div class="wrap-inputcus validate-input m-b-23" data-validate="Phone is required">
+                                    <span class="label-cus">Phone</span>
+                                    <input class="cus-input" type="text" name="phone" placeholder="Type your phone" required>
+                                    <span class="focus-input100" data-symbol="&#xf206;"></span>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <input type="submit" style="font-size: 20px;" class="btn btn-success" value="Đặt hàng" />
+                    <a href="/" class="btn btn-primary">Tiếp tục mua hàng</a>
+                </form>
+            </div>
+        </div>
+        
+    </section><!--/#do_action-->
+</div>
+                                            }

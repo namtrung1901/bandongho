@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+<section id="slider">
+    <!--slider-->
+    @Html.Action("Slider", "Module")
+</section><!--/slider-->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Category</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        <!--category-productsr-->
+                        @Html.Action("ListCategory", "Module")
+                    </div>
+                    <!--/category-products-->
+                    <div class="brands_products">
+                        <!--brands_products-->
+                        <h2>Brands</h2>
+                        <div class="brands-name">
+                            @Html.Action("Brand", "Module")
+                        </div>
+                    </div><!--/brands_products-->
+
+                    <div class="price-range">
+                        <!--price-range-->
+                        <h2>Price Range</h2>
+                        <div class="well text-center">
+                            <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="600" data-slider-step="5" data-slider-value="[250,450]" id="sl2"><br />
+                            <b class="pull-left">$ 0</b> <b class="pull-right">$ 600</b>
+                        </div>
+                    </div><!--/price-range-->
+
+                    <div class="shipping text-center">
+                        <!--shipping-->
+                        <img src="" alt="" />
+                    </div><!--/shipping-->
+
+                </div>
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">New Products</h2>
+                    
+                        @Html.Action("HomeProduct", "Trangchu")
+                        
+                </div><!--features_items-->
+
+                <div class="recommended_items">
+                    <!--recommended_items-->
+                    <h2 class="title text-center">Promotional Products</h2>
+
+                        @Html.Action("PromotionProduct", "Trangchu");
+                </div><!--/recommended_items-->
+            </div>
+        </div>
+    </div>
+</section>

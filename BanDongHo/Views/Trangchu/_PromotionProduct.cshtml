@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BanDongHo.Models.Product>
+@foreach (var pro in Model)
+{
+    <div class="col-sm-4">
+        <div class="product-image-wrapper">
+            <a href="~/@pro.Slug">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <img src="~/Images/@pro.Img" alt="" />
+                        <del><h2>@pro.Price.ToString("#,##0")<sup>đ</sup></h2></del>
+                        <h2>@pro.Price_sale.ToString("#,##0")<sup>đ</sup></h2>
+                        <p>@pro.Name</p>
+                        <a href="@Url.Action("AddCart", "Giohang", new { @Masp = pro.Id, @strURL = Request.Url.ToString() })" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                    </div>
+                </div>
+            </a>
+            <div class="choose">
+                <ul class="nav nav-pills nav-justified">
+                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
+                    <li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+}

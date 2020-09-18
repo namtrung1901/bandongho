@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Đăng ký</title>
+</head>
+<body>
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-regis100 p-l-55 p-r-55 p-t-65 p-b-54">
+                <form class="login100-form validate-form" action="@Url.Action("SaveRegister","Account")" method="post">
+                    <span class="login100-form-title p-b-49">
+                        Register
+                    </span>
+                    <div class="row">
+                        <div class="col-md-6 wrap-inputregis100 validate-input m-b-23" data-validate="Username is required">
+                            <span class="label-input100">Họ và Tên</span>
+                            <input class="input100" type="text" name="fullname" placeholder="Type your fullname" required>
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+                        <div class="col-md-6 wrap-inputregis100 validate-input m-b-23" data-validate="Username is required">
+                            <span class="label-input100">Username</span>
+                            <input class="input100" type="text" name="username" placeholder="Type your username" required>
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 wrap-inputregis100 validate-input m-b-23" data-validate="Email is required">
+                            <span class="label-input100">Email</span>
+                            <input class="input100" type="text" name="email" placeholder="Type your email" required>
+                            <span class="focus-input100" data-symbol="&#xf206;"></span>
+                        </div>
+                        <div class="col-md-6 wrap-inputregis100 validate-input" data-validate="Password is required">
+                            <span class="label-input100">Password</span>
+                            <input class="input100" type="password" name="pass" placeholder="Type your password" required>
+                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        </div>
+                    </div>
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="Phone is required">
+                        <span class="label-input100">Phone</span>
+                        <input class="input100" type="text" name="phone" placeholder="Type your phone" required>
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn">
+                            </div>
+                            <button class="login100-form-btn">
+                                Register
+                            </button>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn">
+                            </div>
+                            <a id="btnLogin" href="@Url.Action("Login","Account")" class="login100-form-btn">
+                                Login
+                            </a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

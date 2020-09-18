@@ -1,0 +1,9 @@
+﻿@model IEnumerable<BanDongHo.Models.Category>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li>
+            <a class="text-dark text-decoration-none" href="~/san-pham/@item.Slug">@item.Name</a>
+        </li>
+    }
+</ul>

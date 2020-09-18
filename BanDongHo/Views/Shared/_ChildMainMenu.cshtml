@@ -1,0 +1,5 @@
+﻿@model IEnumerable<BanDongHo.Models.Menu>
+@foreach (var item in Model)
+{
+    <li><a href="~/shop/@item.Link">@item.Name</a></li>
+}
