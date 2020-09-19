@@ -17,6 +17,8 @@ namespace BanDongHo.Models
         [StringLength(255)]
         public string Slug { get; set; }
         [StringLength(255)]
+        public string Description { get; set; }
+        [StringLength(255)]
         public string Detail { get; set; }
         [StringLength(255)]
         public string Img { get; set; }
